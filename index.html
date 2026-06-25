@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control de Productos</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    body { display: flex; min-height: 100vh; background-color: #f5f5f5; }
+    .sidebar { width: 250px; background-color: #333; color: white; display: flex; flex-direction: column; padding: 20px; }
+    .sidebar h2 { margin-bottom: 20px; font-size: 20px; }
+    .sidebar input, .sidebar button { margin-bottom: 10px; padding: 8px; border-radius: 5px; border: none; }
+    .sidebar button { background-color: #555; color: white; cursor: pointer; }
+    .sidebar button:hover { background-color: #777; }
+    .main-content { flex: 1; padding: 20px; }
+    .hidden { display: none; }
+    ul { list-style: none; padding-left: 0; }
+    li { background-color: white; margin-bottom: 5px; padding: 10px; border-radius: 5px; display: flex; justify-content: space-between; align-items: center; }
+    li button { background-color: #e74c3c; color: white; padding: 5px 8px; border: none; border-radius: 3px; cursor: pointer; }
+    li button:hover { background-color: #c0392b; }
+    header h1 { font-size: 24px; color: #333; margin-bottom: 20px; }
+    .counter { margin-bottom: 10px; font-weight: bold; }
+    @media (max-width: 768px) {
+      body { flex-direction: column; }
+      .sidebar { width: 100%; flex-direction: row; overflow-x: auto; }
+      .sidebar input, .sidebar button { flex: 1 0 auto; margin-right: 10px; }
+    }
+  </style>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Menú</h2>
+    <button id="homeBtn">Página Principal</button>
+    <button id="showListBtn">Lista de Productos</button>
+    <input type="text" id="searchInput" placeholder="Buscar producto">
+    <button id="configBtn">Configuración</button>
+    <button id="profileBtn">Perfil</button>
+    <button id="logoutBtn">Cerrar sesión</button>
+    <div class="counter">Total productos: <span id="productCount">0</span></div>
+    <input type="text" id="productName" placeholder="Nombre del producto">
+    <input type="date" id="productDate">
+    <select id="categorySelect"></select>
+    <input type="text" id="newCategory" placeholder="Nueva categoría">
+  <button id="addCategoryBtn" type="button">Agregar categoría</button>
+  <button id="deleteCategoryBtn" type="button">Eliminar categoría</button>
+  <button id="addBtn" type="button">Agregar Producto</button>
+    <hr style="border-color: rgba(255,255,255,0.06); margin:10px 0;">
+    <button id="calendarBtn">Calendario</button>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h1 id="mainTitle">Bienvenido al Control de Productos</h1>
+    </header>
+    <div id="statusBanner" style="margin:12px 0;padding:8px;border-radius:6px;background:linear-gradient(90deg,#eef 0%,#ddf 100%);color:#111;display:none"></div>
+    <ul id="productList" class="hidden"></ul>
+  </div>
+  
+  <script src="app.js"></script>
+</body>
+</html>
